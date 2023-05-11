@@ -1,0 +1,27 @@
+import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
+import java.io.File;
+
+public class ReproductorAudio extends Application {
+    private MediaPlayer mediaPlayer;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+        File file = new File("cancion.mp3"); // Ruta del archivo de audio
+        Media media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play(); // Reproduce el archivo de audio
+    }
+
+    @Override
+    public void stop() throws Exception {
+        mediaPlayer.stop(); // Detiene la reproducción al cerrar la aplicación
+        super.stop();
+    }
+}
